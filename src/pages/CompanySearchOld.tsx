@@ -17,7 +17,6 @@ interface Candidate {
   projetos: string;
   storyline: string;
   githubPortfolio?: string;
-  matchPercentage?: number;
 }
 
 const CompanySearch = () => {
@@ -25,7 +24,6 @@ const CompanySearch = () => {
   const [filteredCandidates, setFilteredCandidates] = useState<Candidate[]>([]);
   const [courseFilter, setCourseFilter] = useState("all");
   const [semesterFilter, setSemesterFilter] = useState("all");
-  const [matchFilter, setMatchFilter] = useState("all");
 
   // Dados fake para demonstração
   const candidatosFake: Candidate[] = [
@@ -39,8 +37,7 @@ const CompanySearch = () => {
       disponibilidade: "Estágio",
       projetos: "App de gestão estudantil com 1k usuários ativos. Desenvolveu sistema de notificações push e integração com APIs da universidade.",
       storyline: "Transformou um projeto acadêmico em solução real para sua universidade. Demonstra capacidade de execução e visão de produto.",
-      githubPortfolio: "https://github.com/anasilva",
-      matchPercentage: 95
+      githubPortfolio: "https://github.com/anasilva"
     },
     {
       id: 2,
@@ -52,8 +49,7 @@ const CompanySearch = () => {
       disponibilidade: "Emprego",
       projetos: "Sistema de design para startup de healthtech. Criou 50+ componentes reutilizáveis e documentação completa no Figma.",
       storyline: "Já trabalhou freelance para 3 startups enquanto mantém IRA excelente. Combina criatividade com metodologia.",
-      githubPortfolio: "https://behance.net/carlosmendes",
-      matchPercentage: 72
+      githubPortfolio: "https://behance.net/carlosmendes"
     },
     {
       id: 3,
@@ -65,8 +61,7 @@ const CompanySearch = () => {
       disponibilidade: "Ambos",
       projetos: "Consultoria para 5 pequenas empresas locais. Aumentou vendas em média 40% através de estratégias digitais.",
       storyline: "Une teoria administrativa com resultados práticos. Já impactou negócios reais antes mesmo de se formar.",
-      githubPortfolio: "https://linkedin.com/in/marianacosta",
-      matchPercentage: 65
+      githubPortfolio: "https://linkedin.com/in/marianacosta"
     },
     {
       id: 4,
@@ -78,8 +73,7 @@ const CompanySearch = () => {
       disponibilidade: "Emprego",
       projetos: "API REST para e-commerce que processa 10k requisições por minuto. Implementou cache inteligente e otimizações de performance.",
       storyline: "Demonstra domínio técnico avançado com foco em performance e escalabilidade. Pronto para desafios enterprise.",
-      githubPortfolio: "https://github.com/pedrosantos",
-      matchPercentage: 88
+      githubPortfolio: "https://github.com/pedrosantos"
     },
     {
       id: 5,
@@ -433,28 +427,8 @@ const CompanySearch = () => {
       }
     }
 
-    if (matchFilter !== "all") {
-      if (matchFilter === "high") {
-        filtered = filtered.filter(candidate => candidate.matchPercentage && candidate.matchPercentage >= 85);
-      } else if (matchFilter === "medium") {
-        filtered = filtered.filter(candidate => candidate.matchPercentage && candidate.matchPercentage >= 70 && candidate.matchPercentage < 85);
-      } else if (matchFilter === "low") {
-        filtered = filtered.filter(candidate => candidate.matchPercentage && candidate.matchPercentage < 70);
-      }
-    }
-
-    // Ordenar por match percentage (maior para menor) quando disponível
-    filtered.sort((a, b) => {
-      if (a.matchPercentage && b.matchPercentage) {
-        return b.matchPercentage - a.matchPercentage;
-      }
-      if (a.matchPercentage && !b.matchPercentage) return -1;
-      if (!a.matchPercentage && b.matchPercentage) return 1;
-      return 0;
-    });
-
     setFilteredCandidates(filtered);
-  }, [courseFilter, semesterFilter, matchFilter, candidates]);
+  }, [courseFilter, semesterFilter, candidates]);
 
   const getDisponibilidadeColor = (disponibilidade: string) => {
     switch (disponibilidade) {
@@ -471,22 +445,6 @@ const CompanySearch = () => {
     if (ira >= 8.5) return "text-secondary";
     if (ira >= 7.5) return "text-primary";
     return "text-muted-foreground";
-  };
-
-  const getMatchBadgeStyle = (percentage: number) => {
-    if (percentage >= 85) {
-      return "bg-brand-dark-500 text-white border-brand-dark-600 shadow-lg";
-    } else if (percentage >= 70) {
-      return "bg-yellow-100 text-yellow-800 border-yellow-300";
-    } else {
-      return "bg-gray-100 text-gray-700 border-gray-300";
-    }
-  };
-
-  const getMatchIcon = (percentage: number) => {
-    if (percentage >= 85) return "🔥";
-    if (percentage >= 70) return "⭐";
-    return "📊";
   };
 
   return (
@@ -510,62 +468,16 @@ const CompanySearch = () => {
       </header>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Informações da Vaga */}
-        <div className="bg-gradient-to-r from-brand-red-50 to-brand-dark-50 rounded-2xl p-6 mb-8 border border-brand-red-200">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">Desenvolvedor Full Stack Júnior</h2>
-              <p className="text-gray-600">TechCorp • São Paulo/SP • Híbrido</p>
-            </div>
-            <Badge className="bg-brand-dark-100 text-brand-dark-800 border-brand-dark-200">
-              🔥 Vaga Ativa
-            </Badge>
-          </div>
-          <div className="flex flex-wrap gap-2 mb-4">
-            <Badge variant="outline">React</Badge>
-            <Badge variant="outline">Node.js</Badge>
-            <Badge variant="outline">Python</Badge>
-            <Badge variant="outline">TypeScript</Badge>
-            <Badge variant="outline">MongoDB</Badge>
-          </div>
-        </div>
-
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Contrate baseado no que eles{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              IA encontrou {filteredCandidates.length} candidatos
-            </span>{" "}
-            compatíveis com sua vaga
+              REALMENTE fizeram
+            </span>
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Nossa IA analisou automaticamente os requisitos da sua vaga e identificou os candidatos 
-            mais compatíveis baseado em habilidades técnicas, projetos desenvolvidos e experiências práticas.
+          <p className="text-muted-foreground">
+            Descubra talentos através de projetos reais, não apenas diplomas
           </p>
-        </div>
-
-        {/* Insights da IA */}
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
-          <Card className="border border-brand-red-200 bg-brand-red-50">
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-brand-red-600 mb-1">🎯</div>
-              <div className="text-sm font-semibold text-brand-red-800">Matching Inteligente</div>
-              <div className="text-xs text-brand-red-600 mt-1">Baseado em skills + projetos reais</div>
-            </CardContent>
-          </Card>
-          <Card className="border border-brand-dark-200 bg-brand-dark-50">
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-brand-dark-600 mb-1">⚡</div>
-              <div className="text-sm font-semibold text-brand-dark-800">Pré-selecionados</div>
-              <div className="text-xs text-brand-dark-600 mt-1">Candidatos já filtrados pela IA</div>
-            </CardContent>
-          </Card>
-          <Card className="border border-brand-navy-200 bg-brand-navy-50">
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-brand-navy-600 mb-1">📊</div>
-              <div className="text-sm font-semibold text-brand-navy-800">Score de Compatibilidade</div>
-              <div className="text-xs text-brand-navy-600 mt-1">Porcentagem de match para cada perfil</div>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Filtros */}
@@ -577,21 +489,7 @@ const CompanySearch = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div>
-                <label className="text-sm font-medium mb-2 block">Nível de Match</label>
-                <Select value={matchFilter} onValueChange={setMatchFilter}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Todos os matches" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos os matches</SelectItem>
-                    <SelectItem value="high">🔥 Alto Match (85%+)</SelectItem>
-                    <SelectItem value="medium">⭐ Médio Match (70-84%)</SelectItem>
-                    <SelectItem value="low">📊 Baixo Match (menos de 70%)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="text-sm font-medium mb-2 block">Curso</label>
                 <Select value={courseFilter} onValueChange={setCourseFilter}>
@@ -625,24 +523,10 @@ const CompanySearch = () => {
         </Card>
 
         {/* Resultados */}
-        <div className="flex items-center justify-between mb-6 p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-lg font-semibold text-gray-900">
-                {filteredCandidates.length} candidato{filteredCandidates.length !== 1 ? 's' : ''} pré-selecionado{filteredCandidates.length !== 1 ? 's' : ''}
-              </span>
-              <Badge className="bg-brand-red-100 text-brand-red-800">
-                🤖 IA Matching
-              </Badge>
-            </div>
-            <p className="text-sm text-gray-600">
-              Ordenados por compatibilidade • Match baseado em skills + projetos
-            </p>
-          </div>
-          <div className="text-right">
-            <div className="text-sm text-gray-500">Economia de tempo:</div>
-            <div className="text-lg font-bold text-brand-dark-600">~85% menos triagem</div>
-          </div>
+        <div className="mb-4">
+          <p className="text-muted-foreground">
+            {filteredCandidates.length} candidato{filteredCandidates.length !== 1 ? 's' : ''} encontrado{filteredCandidates.length !== 1 ? 's' : ''}
+          </p>
         </div>
 
         {/* Lista de Candidatos */}
@@ -652,14 +536,7 @@ const CompanySearch = () => {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-4">
                   <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-xl font-semibold text-foreground">{candidate.nome}</h3>
-                      {candidate.matchPercentage && (
-                        <Badge className={`${getMatchBadgeStyle(candidate.matchPercentage)} font-bold px-3 py-1`}>
-                          {getMatchIcon(candidate.matchPercentage)} {candidate.matchPercentage}% Match
-                        </Badge>
-                      )}
-                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">{candidate.nome}</h3>
                     <div className="flex flex-wrap gap-2 mb-2">
                       <Badge variant="outline">{candidate.curso}</Badge>
                       <Badge variant="outline">{candidate.semestre}º Semestre</Badge>

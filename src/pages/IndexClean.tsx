@@ -29,6 +29,7 @@ import SAPStyleLogin from "@/components/SAPStyleLogin";
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     { type: 'bot', text: 'Olá! Sou a assistente da GRAN Talentos. Como posso ajudar você a encontrar os melhores talentos universitários?' }
   ]);
@@ -74,23 +75,69 @@ const Index = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 flex items-center justify-center">
-                <img 
-                  src="/logo-gran.webp" 
-                  alt="GRAN Talentos Logo" 
-                  className="w-full h-full object-contain"
-                />
+              <div className="w-10 h-10 bg-gradient-to-r from-brand-red-500 to-brand-navy-900 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-lg">G</span>
               </div>
               <div>
-                <div className="text-lg font-bold text-gray-900 uppercase tracking-wide">CONECTANDO TALENTOS</div>
+                <span className="text-xl font-bold text-gray-900">GRAN Talentos</span>
+                <div className="text-xs text-gray-500 uppercase tracking-wide">CONECTANDO TALENTOS</div>
               </div>
             </div>
 
-            {/* Botão de Login */}
-            <div className="flex items-center">
+            {/* Menu Desktop */}
+            <nav className="hidden lg:flex items-center space-x-8">
+              <a href="#inicio" className="text-gray-600 hover:text-brand-red-500 transition-colors font-medium">
+                Início
+              </a>
+              <a href="#talentos" className="text-gray-600 hover:text-brand-red-500 transition-colors font-medium">
+                Talentos
+              </a>
+              <a href="#solucoes" className="text-gray-600 hover:text-brand-red-500 transition-colors font-medium">
+                Soluções
+              </a>
+              <a href="#sobre" className="text-gray-600 hover:text-brand-red-500 transition-colors font-medium">
+                Sobre
+              </a>
+            </nav>
+
+            {/* Botões de Ação */}
+            <div className="flex items-center space-x-3">
+              <Button variant="outline" size="sm" className="hidden md:flex">
+                Para Estudantes
+              </Button>
               <SAPStyleLogin />
+              
+              {/* Menu Mobile */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="lg:hidden"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                <Menu className="h-5 w-5" />
+              </Button>
             </div>
           </div>
+
+          {/* Menu Mobile Dropdown */}
+          {isMenuOpen && (
+            <div className="lg:hidden border-t bg-white py-4">
+              <nav className="flex flex-col space-y-4">
+                <a href="#inicio" className="text-gray-600 hover:text-brand-red-500 transition-colors">
+                  Início
+                </a>
+                <a href="#talentos" className="text-gray-600 hover:text-brand-red-500 transition-colors">
+                  Talentos
+                </a>
+                <a href="#solucoes" className="text-gray-600 hover:text-brand-red-500 transition-colors">
+                  Soluções
+                </a>
+                <a href="#sobre" className="text-gray-600 hover:text-brand-red-500 transition-colors">
+                  Sobre
+                </a>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
@@ -111,17 +158,14 @@ const Index = () => {
               </Badge>
               
               <h1 className="text-4xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-                Os melhores talentos da
-                <span className="text-brand-red-500"> GRAN Faculdade</span>
+                Encontre o
+                <span className="text-brand-red-500"> talento perfeito</span>
                 <br />para sua empresa
-                <div className="text-2xl lg:text-3xl font-bold text-brand-navy-700 mt-2">
-                  Aqui o match com a vaga é <span className="text-brand-red-500">garantido</span>
-                </div>
               </h1>
               
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Conectamos sua empresa aos talentos mais promissores da GRAN Faculdade através 
-                de matching inteligente com IA. Candidatos pré-qualificados, processos otimizados, contratação certeira.
+                Conectamos as melhores empresas aos talentos universitários mais promissores. 
+                Matching inteligente, resultados comprovados, contratação assertiva.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -149,7 +193,7 @@ const Index = () => {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-brand-dark-600">97%</div>
-                  <div className="text-sm text-gray-600">Satisfação das empresas parceiras</div>
+                  <div className="text-sm text-gray-600">Satisfação</div>
                 </div>
               </div>
             </div>
@@ -263,7 +307,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Talentos Verificados</h3>
                 <p className="text-gray-600">
-                  Todos os perfis são validados pela GRAN. 
+                  Todos os perfis são validados pelas universidades. 
                   Projetos reais, não apenas teorias
                 </p>
               </CardContent>
@@ -300,7 +344,7 @@ const Index = () => {
                 <span className="text-brand-red-500"> É resultado comprovado.</span>
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Nossa plataforma conecta você aos melhores talentos universitários que vão além de currículos. 
+                Nossa plataforma conecta você aos melhores talentos universitários que vão além da teoria. 
                 Cada perfil mostra projetos reais, impacto mensurável e resultados concretos.
               </p>
               
@@ -315,8 +359,8 @@ const Index = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-6 w-6 text-brand-dark-500 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-900">Validação GRAN Faculdade</h4>
-                    <p className="text-gray-600 text-sm">Perfis validados e aprovados pela GRAN Faculdade</p>
+                    <h4 className="font-semibold text-gray-900">Validação Universitária</h4>
+                    <p className="text-gray-600 text-sm">Perfis aprovados pelas melhores instituições do país</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -373,82 +417,104 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Seção Como Funciona */}
+      {/* Seção de Soluções */}
       <section id="solucoes" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Como Funciona
+              Soluções para cada necessidade
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Processo simples e eficiente em 4 passos para conectar sua empresa aos melhores talentos da GRAN Faculdade
+              Ferramentas completas para encontrar, avaliar e contratar os melhores talentos
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Passo 1 */}
-            <div className="text-center" data-aos="fade-up" data-aos-delay="100">
-              <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <span className="text-2xl font-bold text-white">1</span>
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Solução 1 */}
+            <Card className="border-0 shadow-lg" data-aos="slide-right">
+              <CardContent className="p-8">
+                <div className="flex items-start mb-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                    <Search className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      Busca Inteligente de Talentos
+                    </h3>
+                    <p className="text-sm text-gray-500 mb-4">
+                      Encontre candidatos ideais através de projetos reais
+                    </p>
+                  </div>
                 </div>
-                <div className="hidden lg:block absolute top-10 -right-8 w-16 h-0.5 bg-gray-300"></div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Cadastre sua Empresa</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Crie seu perfil empresarial e conte sobre suas necessidades, cultura e objetivos de contratação
-              </p>
-            </div>
-
-            {/* Passo 2 */}
-            <div className="text-center" data-aos="fade-up" data-aos-delay="200">
-              <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-brand-navy-500 to-brand-navy-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <span className="text-2xl font-bold text-white">2</span>
+                
+                <div className="space-y-4">
+                  <div className="border-l-4 border-blue-500 pl-4">
+                    <p className="font-medium text-gray-900 mb-1">O Desafio:</p>
+                    <p className="text-gray-600 text-sm">
+                      Como encontrar talentos que vão além da teoria 
+                      e têm experiência prática comprovada?
+                    </p>
+                  </div>
+                  
+                  <div className="border-l-4 border-green-500 pl-4">
+                    <p className="font-medium text-gray-900 mb-1">Nossa Solução:</p>
+                    <ul className="text-gray-600 text-sm space-y-1">
+                      <li>• <strong>Perfis com projetos reais</strong> desenvolvidos pelos estudantes</li>
+                      <li>• <strong>Busca inteligente</strong> por skills e experiências específicas</li>
+                      <li>• <strong>Validação de resultados:</strong> métricas de impacto dos projetos</li>
+                    </ul>
+                  </div>
                 </div>
-                <div className="hidden lg:block absolute top-10 -right-8 w-16 h-0.5 bg-gray-300"></div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Defina o Perfil Ideal</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Especifique as competências, áreas de conhecimento e características do candidato perfeito para sua vaga
-              </p>
-            </div>
 
-            {/* Passo 3 */}
-            <div className="text-center" data-aos="fade-up" data-aos-delay="300">
-              <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-brand-dark-500 to-brand-dark-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <span className="text-2xl font-bold text-white">3</span>
+                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700" asChild>
+                  <Link to="/buscar-talentos">
+                    Explorar Talentos
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Solução 2 */}
+            <Card className="border-0 shadow-lg" data-aos="slide-left">
+              <CardContent className="p-8">
+                <div className="flex items-start mb-6">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                    <BarChart3 className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      Plataforma de Recrutamento
+                    </h3>
+                    <p className="text-sm text-gray-500 mb-4">
+                      Automatize e acelere seu processo de contratação
+                    </p>
+                  </div>
                 </div>
-                <div className="hidden lg:block absolute top-10 -right-8 w-16 h-0.5 bg-gray-300"></div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Matching Inteligente</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Nossa IA analisa milhares de perfis da GRAN Faculdade e encontra os candidatos com maior compatibilidade
-              </p>
-            </div>
-
-            {/* Passo 4 */}
-            <div className="text-center" data-aos="fade-up" data-aos-delay="400">
-              <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <span className="text-2xl font-bold text-white">4</span>
+                
+                <div className="space-y-4">
+                  <div className="border-l-4 border-purple-500 pl-4">
+                    <p className="font-medium text-gray-900 mb-1">O Desafio:</p>
+                    <p className="text-gray-600 text-sm">
+                      Como reduzir tempo de recrutamento sem perder 
+                      qualidade na seleção?
+                    </p>
+                  </div>
+                  
+                  <div className="border-l-4 border-orange-500 pl-4">
+                    <p className="font-medium text-gray-900 mb-1">Nossa Plataforma:</p>
+                    <ul className="text-gray-600 text-sm space-y-1">
+                      <li>• <strong>Interface intuitiva:</strong> Visualize projetos rapidamente</li>
+                      <li>• <strong>Filtros inteligentes:</strong> Encontre o perfil exato</li>
+                      <li>• <strong>Base qualificada:</strong> Talentos pré-validados</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Conecte e Contrate</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Entre em contato direto com os talentos selecionados e acelere seu processo de contratação
-              </p>
-            </div>
-          </div>
 
-          <div className="text-center mt-12" data-aos="fade-up" data-aos-delay="500">
-            <Button size="lg" className="bg-brand-red-500 hover:bg-brand-red-600" asChild>
-              <Link to="/buscar-talentos">
-                <Search className="mr-2 h-5 w-5" />
-                Começar Agora
-              </Link>
-            </Button>
+                <Button variant="outline" className="w-full mt-6">
+                  Solicitar Demonstração
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -460,14 +526,10 @@ const Index = () => {
             {/* Logo e Descrição */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-12 h-12 flex items-center justify-center">
-                  <img 
-                    src="/logo-gran.webp" 
-                    alt="GRAN Talentos Logo" 
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-10 h-10 bg-gradient-to-r from-brand-red-500 to-brand-navy-900 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">G</span>
                 </div>
-                <span className="text-xl font-bold">CONECTANDO TALENTOS</span>
+                <span className="text-xl font-bold">GRAN Talentos</span>
               </div>
               <p className="text-gray-400 mb-4 max-w-md">
                 A GRAN Talentos conecta os melhores talentos universitários 
@@ -510,7 +572,7 @@ const Index = () => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 GRAN Talentos. Todos os direitos reservados.</p>
+            <p>&copy; 2024 GRAN Talentos. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

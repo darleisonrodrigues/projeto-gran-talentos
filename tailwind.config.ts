@@ -57,6 +57,45 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom Brand Colors
+        brand: {
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            200: '#fecaca',
+            300: '#fca5a5',
+            400: '#f87171',
+            500: '#DD303E', // Primary red
+            600: '#c62d3a',
+            700: '#b91c1c',
+            800: '#991b1b',
+            900: '#7f1d1d',
+          },
+          dark: {
+            50: '#f8fafc',
+            100: '#f1f5f9',
+            200: '#e2e8f0',
+            300: '#cbd5e1',
+            400: '#94a3b8',
+            500: '#071731', // Primary dark blue
+            600: '#051220',
+            700: '#040e1a',
+            800: '#030a14',
+            900: '#02070f',
+          },
+          navy: {
+            50: '#f8fafc',
+            100: '#f1f5f9',
+            200: '#e2e8f0',
+            300: '#cbd5e1',
+            400: '#94a3b8',
+            500: '#64748b',
+            600: '#475569',
+            700: '#334155',
+            800: '#1e293b',
+            900: '#0D134C', // Primary navy
+          }
+        },
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
