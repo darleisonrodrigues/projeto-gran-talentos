@@ -125,11 +125,9 @@ const Index = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button size="lg" className="bg-brand-red-500 hover:bg-brand-red-600" asChild>
-                  <Link to="/buscar-talentos">
-                    <Search className="mr-2 h-5 w-5" />
-                    Explorar Talentos
-                  </Link>
+                <Button size="lg" className="bg-brand-red-500 hover:bg-brand-red-600 cursor-default">
+                  <Search className="mr-2 h-5 w-5" />
+                  Explorar Talentos
                 </Button>
                 <Button size="lg" variant="outline" className="border-brand-navy-500 text-brand-navy-700 hover:bg-brand-navy-50">
                   <Play className="mr-2 h-5 w-5" />
@@ -328,11 +326,9 @@ const Index = () => {
                 </div>
               </div>
 
-              <Button className="bg-brand-red-500 hover:bg-brand-red-600 text-white" size="lg" asChild>
-                <Link to="/buscar-talentos">
-                  <Search className="mr-2 h-5 w-5" />
-                  Explorar Talentos Verificados
-                </Link>
+              <Button className="bg-brand-red-500 hover:bg-brand-red-600 text-white cursor-default" size="lg">
+                <Search className="mr-2 h-5 w-5" />
+                Explorar Talentos Verificados
               </Button>
             </div>
 
@@ -491,7 +487,6 @@ const Index = () => {
               <h4 className="font-semibold text-white mb-4">Para Empresas</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">Busca de Talentos</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Planos e Preços</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Cases de Sucesso</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Demonstração</a></li>
               </ul>

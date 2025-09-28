@@ -107,13 +107,10 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
-                  className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4"
-                  asChild
+                  className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 cursor-default"
                 >
-                  <Link to="/buscar-talentos">
-                    <Search className="mr-2 h-5 w-5" />
-                    Explorar Talentos
-                  </Link>
+                  <Search className="mr-2 h-5 w-5" />
+                  Explorar Talentos
                 </Button>
                 <Button 
                   variant="outline" 
@@ -305,10 +302,8 @@ const Index = () => {
                   </div>
                 </div>
 
-                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link to="/buscar-talentos">
-                    Explorar Talentos
-                  </Link>
+                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700 cursor-default">
+                  Explorar Talentos
                 </Button>
               </CardContent>
             </Card>
