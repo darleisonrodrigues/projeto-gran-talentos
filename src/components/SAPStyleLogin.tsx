@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Mail, Lock, Eye, EyeOff, Building2, Shield, Zap, ArrowRight, CheckCircle, Users } from "lucide-react";
 
 const SAPStyleLogin = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loginData, setLoginData] = useState({
@@ -30,7 +32,8 @@ const SAPStyleLogin = () => {
     // Simular login
     setTimeout(() => {
       setIsLoading(false);
-      // Redirecionar ou fechar modal
+      // Redirecionar para dashboard da empresa usando React Router
+      navigate('/company-dashboard');
     }, 2000);
   };
 
