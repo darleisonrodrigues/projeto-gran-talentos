@@ -9,6 +9,7 @@ interface CVData {
   resumo: string;
   storyline: string;
   pontosFortes: string[];
+  recomendacoesEntrevista?: string[];
   dados: {
     nome: string;
     curso: string;
@@ -52,7 +53,7 @@ const ProfileCreated = () => {
           </Button>
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-gradient-primary rounded"></div>
-            <span className="font-semibold">Vitae</span>
+            <span className="font-semibold">Portfolio IA</span>
           </div>
         </div>
       </header>
@@ -126,6 +127,20 @@ const ProfileCreated = () => {
                       Ver Portfólio
                     </a>
                   </Button>
+                </div>
+              )}
+
+              {cvData.recomendacoesEntrevista && cvData.recomendacoesEntrevista.length > 0 && (
+                <div className="bg-primary/10 p-4 rounded-lg">
+                  <h4 className="font-medium text-primary mb-2">Dicas para Entrevistas</h4>
+                  <ul className="space-y-1">
+                    {cvData.recomendacoesEntrevista.map((recomendacao, index) => (
+                      <li key={index} className="text-sm text-muted-foreground flex items-start">
+                        <span className="text-primary mr-2 flex-shrink-0">•</span>
+                        {recomendacao}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </CardContent>

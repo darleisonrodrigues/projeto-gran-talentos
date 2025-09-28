@@ -13,13 +13,21 @@ import { useToast } from "@/hooks/use-toast";
 interface StudentData {
   nome: string;
   cidade: string;
+  faculdade: string;
   disponibilidade: string;
+  modalidadeTrabalho: string;
   curso: string;
   semestre: number;
   previsaoFormatura: string;
   ira: number;
   projetos: string;
   githubPortfolio: string;
+  linkHistorico: string;
+  linkVideo: string;
+  compartilharHistorico: boolean;
+  compartilharGraduacao: boolean;
+  compartilharSoftSkills: boolean;
+  compartilharVideo: boolean;
 }
 
 const StudentRegister = () => {
@@ -28,24 +36,34 @@ const StudentRegister = () => {
   const [formData, setFormData] = useState<StudentData>({
     nome: "",
     cidade: "",
+    faculdade: "",
     disponibilidade: "",
+    modalidadeTrabalho: "",
     curso: "",
     semestre: 1,
     previsaoFormatura: "",
     ira: 0,
     projetos: "",
     githubPortfolio: "",
+    linkHistorico: "",
+    linkVideo: "",
+    compartilharHistorico: true,
+    compartilharGraduacao: true,
+    compartilharSoftSkills: true,
+    compartilharVideo: true,
   });
 
   const gerarCV = (dados: StudentData) => {
-    const storyline = `${dados.nome} é ${dados.disponibilidade === "Ambos" ? "um talento versátil" : `candidato para ${dados.disponibilidade.toLowerCase()}`} cursando ${dados.curso} no ${dados.semestre}º semestre com IRA de ${dados.ira}. ${dados.projetos ? `Destaca-se por projetos práticos como: ${dados.projetos.substring(0, 100)}...` : 'Demonstra proatividade e vontade de aprender.'} Disponível em ${dados.cidade}.`;
+    const storyline = `${dados.nome} é ${dados.disponibilidade === "Ambos" ? "um talento versátil" : `candidato para ${dados.disponibilidade.toLowerCase()}`} cursando ${dados.curso} na ${dados.faculdade} no ${dados.semestre}º semestre com IRA de ${dados.ira}. ${dados.projetos ? `Destaca-se por projetos práticos como: ${dados.projetos.substring(0, 100)}...` : 'Demonstra proatividade e vontade de aprender.'} Disponível para trabalho ${dados.modalidadeTrabalho.toLowerCase()} em ${dados.cidade}.`;
     
     const pontosFortes = extrairPontosFortes(dados.projetos);
+    const recomendacoesEntrevista = gerarRecomendacoesEntrevista(dados);
     
     return {
       resumo: `${dados.curso} | ${dados.semestre}º Semestre | IRA: ${dados.ira}`,
       storyline: storyline,
       pontosFortes: pontosFortes,
+      recomendacoesEntrevista: recomendacoesEntrevista,
       dados: dados
     };
   };
@@ -58,13 +76,34 @@ const StudentRegister = () => {
     return encontrados.slice(0, 3);
   };
 
+  const gerarRecomendacoesEntrevista = (dados: StudentData) => {
+    const recomendacoes = [];
+    
+    if (dados.ira >= 8.5) {
+      recomendacoes.push("Destaque seu excelente desempenho acadêmico como prova de dedicação e capacidade de aprendizado.");
+    }
+    
+    if (dados.projetos && dados.projetos.length > 50) {
+      recomendacoes.push("Prepare exemplos específicos dos seus projetos com métricas e resultados concretos.");
+    }
+    
+    if (dados.semestre >= 6) {
+      recomendacoes.push("Enfatize sua experiência e maturidade acadêmica, mostrando evolução ao longo do curso.");
+    }
+    
+    recomendacoes.push("Demonstre paixão pelo que faz e curiosidade para aprender novas tecnologias.");
+    recomendacoes.push("Prepare perguntas inteligentes sobre a empresa e o papel para mostrar seu interesse genuíno.");
+    
+    return recomendacoes.slice(0, 3);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.nome || !formData.curso || !formData.cidade) {
+    if (!formData.nome || !formData.curso || !formData.cidade || !formData.faculdade) {
       toast({
         title: "Campos obrigatórios",
-        description: "Por favor, preencha nome, curso e cidade.",
+        description: "Por favor, preencha nome, curso, cidade e faculdade.",
         variant: "destructive",
       });
       return;
@@ -93,7 +132,7 @@ const StudentRegister = () => {
     navigate("/perfil-criado");
   };
 
-  const handleInputChange = (field: keyof StudentData, value: string | number) => {
+  const handleInputChange = (field: keyof StudentData, value: string | number | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -159,17 +198,42 @@ const StudentRegister = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="disponibilidade">Disponibilidade</Label>
-                <Select onValueChange={(value) => handleInputChange("disponibilidade", value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione sua disponibilidade" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Estágio">Estágio</SelectItem>
-                    <SelectItem value="Emprego">Emprego</SelectItem>
-                    <SelectItem value="Ambos">Ambos</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label htmlFor="faculdade">Faculdade/Universidade*</Label>
+                <Input
+                  id="faculdade"
+                  placeholder="Nome da sua instituição de ensino"
+                  value={formData.faculdade}
+                  onChange={(e) => handleInputChange("faculdade", e.target.value)}
+                  required
+                />
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="disponibilidade">Disponibilidade</Label>
+                  <Select onValueChange={(value) => handleInputChange("disponibilidade", value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione sua disponibilidade" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Estágio">Estágio</SelectItem>
+                      <SelectItem value="Emprego">Emprego</SelectItem>
+                      <SelectItem value="Ambos">Ambos</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="modalidadeTrabalho">Modalidade de Trabalho</Label>
+                  <Select onValueChange={(value) => handleInputChange("modalidadeTrabalho", value)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione a modalidade" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Presencial">Presencial</SelectItem>
+                      <SelectItem value="Remoto">Remoto</SelectItem>
+                      <SelectItem value="Híbrido">Híbrido</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -180,13 +244,16 @@ const StudentRegister = () => {
               <CardTitle>Histórico Acadêmico</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-                <Upload className="mx-auto h-8 w-8 text-muted-foreground mb-2" />
-                <Label htmlFor="historico" className="cursor-pointer text-sm font-medium">
-                  Upload do Histórico Escolar (PDF)
-                </Label>
-                <Input id="historico" type="file" accept=".pdf" className="hidden" />
-                <p className="text-xs text-muted-foreground mt-2">Ou preencha manualmente abaixo:</p>
+              <div>
+                <Label htmlFor="linkHistorico">Link do Histórico Escolar</Label>
+                <Input
+                  id="linkHistorico"
+                  type="url"
+                  placeholder="https://drive.google.com/... ou outro link de acesso"
+                  value={formData.linkHistorico}
+                  onChange={(e) => handleInputChange("linkHistorico", e.target.value)}
+                />
+                <p className="text-xs text-muted-foreground mt-1">Compartilhe um link de acesso ao seu histórico acadêmico</p>
               </div>
               
               <div className="grid md:grid-cols-2 gap-4">
@@ -306,18 +373,79 @@ const StudentRegister = () => {
             </CardContent>
           </Card>
 
-          {/* Upload Vídeo */}
+          {/* Link Vídeo */}
           <Card>
-            <CardContent className="p-6">
-              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-                <Video className="mx-auto h-8 w-8 text-muted-foreground mb-2" />
-                <Label htmlFor="video" className="cursor-pointer text-sm font-medium">
-                  Vídeo de Apresentação (Opcional)
-                </Label>
-                <Input id="video" type="file" accept="video/*" className="hidden" />
-                <p className="text-xs text-muted-foreground mt-2">
-                  Grave um vídeo de 60 segundos contando sobre você
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <Video className="mr-2 h-5 w-5" />
+                Vídeo de Apresentação
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div>
+                <Label htmlFor="linkVideo">Link do Vídeo de Apresentação</Label>
+                <Input
+                  id="linkVideo"
+                  type="url"
+                  placeholder="https://youtube.com/... ou outro link do seu vídeo"
+                  value={formData.linkVideo}
+                  onChange={(e) => handleInputChange("linkVideo", e.target.value)}
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  Compartilhe um vídeo de 60 segundos contando sobre você
                 </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Autorização de Compartilhamento */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Autorização de Compartilhamento</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Selecione quais informações você autoriza compartilhar com empresas cadastradas na plataforma:
+              </p>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="compartilharHistorico"
+                  checked={formData.compartilharHistorico}
+                  onChange={(e) => handleInputChange("compartilharHistorico", e.target.checked)}
+                  className="rounded"
+                />
+                <Label htmlFor="compartilharHistorico">Histórico escolar</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="compartilharGraduacao"
+                  checked={formData.compartilharGraduacao}
+                  onChange={(e) => handleInputChange("compartilharGraduacao", e.target.checked)}
+                  className="rounded"
+                />
+                <Label htmlFor="compartilharGraduacao">Dados da graduação atual</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="compartilharSoftSkills"
+                  checked={formData.compartilharSoftSkills}
+                  onChange={(e) => handleInputChange("compartilharSoftSkills", e.target.checked)}
+                  className="rounded"
+                />
+                <Label htmlFor="compartilharSoftSkills">Soft skills</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="compartilharVideo"
+                  checked={formData.compartilharVideo}
+                  onChange={(e) => handleInputChange("compartilharVideo", e.target.checked)}
+                  className="rounded"
+                />
+                <Label htmlFor="compartilharVideo">Link para vídeo</Label>
               </div>
             </CardContent>
           </Card>
