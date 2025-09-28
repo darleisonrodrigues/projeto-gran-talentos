@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
   // For GitHub Pages (gh-pages): use repository path "/vitae-talent-forge/"
   const base = mode === 'production' && process.env.VERCEL 
     ? "/" 
-    : "/vitae-talent-forge/";
+    : "/projeto-gran-talentos/";
 
   return {
     base,

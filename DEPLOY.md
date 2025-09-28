@@ -26,7 +26,7 @@ Este projeto está configurado para deploy automático em **GitHub Pages** e **V
 ## 🌐 URLs de Deploy
 
 ### GitHub Pages
-- **URL**: `https://cleo2406.github.io/vitae-talent-forge/`
+- **URL**: `https://darleisonrodrigues.github.io/projeto-gran-talentos/`
 - **Deploy**: Automático via push na branch `main`
 - **Status**: ✅ Configurado
 

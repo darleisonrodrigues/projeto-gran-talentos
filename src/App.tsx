@@ -21,7 +21,7 @@ const getBasename = () => {
     return '/';
   }
   // GitHub Pages
-  return '/vitae-talent-forge';
+  return '/projeto-gran-talentos';
 };
 
 const App = () => (
