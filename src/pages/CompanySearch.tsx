@@ -146,6 +146,246 @@ const CompanySearch = () => {
       projetos: "Plataforma de ensino online com 500+ alunos ativos. Desenvolveu sistema de gamificação que aumentou engajamento em 150%.",
       storyline: "Gabriel identificou uma lacuna no mercado educacional e criou uma solução escalável. Demonstra visão de produto e execução.",
       githubPortfolio: "https://github.com/gabrieltorres"
+    },
+    {
+      id: 11,
+      nome: "Fernanda Alves",
+      curso: "Engenharia de Software",
+      semestre: 5,
+      ira: 9.2,
+      cidade: "Goiânia",
+      disponibilidade: "Estágio",
+      projetos: "Sistema de monitoramento IoT para agricultura inteligente. Sensores conectados que otimizam irrigação e reduzem desperdício em 40%.",
+      storyline: "Fernanda combina tecnologia de ponta com sustentabilidade. Seus projetos geram impacto real no agronegócio.",
+      githubPortfolio: "https://github.com/fernandaalves"
+    },
+    {
+      id: 12,
+      nome: "Thiago Martins",
+      curso: "Marketing Digital",
+      semestre: 6,
+      ira: 8.5,
+      cidade: "São Paulo",
+      disponibilidade: "Emprego",
+      projetos: "Campanha viral que gerou 2M de visualizações para startup de fintech. ROI de 300% em aquisição de clientes.",
+      storyline: "Thiago entende o comportamento digital da geração Z. Suas campanhas conectam marcas com audiências de forma autêntica.",
+      githubPortfolio: "https://linkedin.com/in/thiago-martins"
+    },
+    {
+      id: 13,
+      nome: "Larissa Pereira",
+      curso: "Design",
+      semestre: 7,
+      ira: 8.9,
+      cidade: "Campinas",
+      disponibilidade: "Ambos",
+      projetos: "Interface de realidade aumentada para museus. Experiência imersiva que aumentou engajamento de visitantes em 85%.",
+      storyline: "Larissa está na vanguarda do design para tecnologias emergentes. Combina arte, tecnologia e experiência do usuário.",
+      githubPortfolio: "https://larissapereira.design"
+    },
+    {
+      id: 14,
+      nome: "Roberto Santos",
+      curso: "Ciência de Dados",
+      semestre: 8,
+      ira: 9.4,
+      cidade: "Brasília",
+      disponibilidade: "Emprego",
+      projetos: "Modelo de ML para previsão de demanda que reduziu desperdício em 25% para rede de supermercados. Processamento de 10M+ registros.",
+      storyline: "Roberto transforma dados em insights acionáveis. Suas análises preditivas geram valor mensurável para negócios.",
+      githubPortfolio: "https://github.com/robertosantos"
+    },
+    {
+      id: 15,
+      nome: "Amanda Lima",
+      curso: "Psicologia Organizacional",
+      semestre: 6,
+      ira: 8.7,
+      cidade: "Porto Alegre",
+      disponibilidade: "Estágio",
+      projetos: "Programa de bem-estar corporativo que reduziu turnover em 35% em startup de tecnologia. Implementação de práticas de mindfulness.",
+      storyline: "Amanda entende que pessoas são o coração das organizações. Suas intervenções criam ambientes de trabalho mais saudáveis e produtivos.",
+      githubPortfolio: "https://linkedin.com/in/amanda-lima-psi"
+    },
+    {
+      id: 16,
+      nome: "Diego Costa",
+      curso: "Engenharia de Software",
+      semestre: 4,
+      ira: 8.8,
+      cidade: "Manaus",
+      disponibilidade: "Estágio",
+      projetos: "App de preservação ambiental com gamificação. 5k usuários ativos registrando ações sustentáveis e plantio de árvores na Amazônia.",
+      storyline: "Diego usa tecnologia para consciência ambiental. Seus projetos conectam inovação digital com preservação da natureza.",
+      githubPortfolio: "https://github.com/diego-amazonia"
+    },
+    {
+      id: 17,
+      nome: "Beatriz Oliveira",
+      curso: "Arquitetura e Urbanismo",
+      semestre: 7,
+      ira: 9.0,
+      cidade: "Belo Horizonte",
+      disponibilidade: "Emprego",
+      projetos: "Projeto de habitação social sustentável premiado. Casas eco-eficientes que reduzem custos em 50% para famílias de baixa renda.",
+      storyline: "Beatriz projeta espaços que transformam vidas. Sua arquitetura social combina sustentabilidade com acessibilidade.",
+      githubPortfolio: "https://beatrizoliveira-arq.com"
+    },
+    {
+      id: 18,
+      nome: "Victor Ferreira",
+      curso: "Engenharia Mecânica",
+      semestre: 8,
+      ira: 8.6,
+      cidade: "São José dos Campos",
+      disponibilidade: "Emprego",
+      projetos: "Protótipo de drone autônomo para inspeção de turbinas eólicas. Reduz tempo de manutenção em 60% e aumenta segurança.",
+      storyline: "Victor está na fronteira da engenharia 4.0. Seus projetos automatizam processos complexos com precisão e segurança.",
+      githubPortfolio: "https://github.com/victor-drones"
+    },
+    {
+      id: 19,
+      nome: "Natália Silva",
+      curso: "Jornalismo Digital",
+      semestre: 5,
+      ira: 8.4,
+      cidade: "Recife",
+      disponibilidade: "Ambos",
+      projetos: "Podcast sobre inovação social com 50k downloads mensais. Cobriu 30+ startups de impacto social no Nordeste.",
+      storyline: "Natália amplifica vozes que transformam comunidades. Seu jornalismo conecta inovação social com audiências engajadas.",
+      githubPortfolio: "https://natalia-midia.com"
+    },
+    {
+      id: 20,
+      nome: "Henrique Gomes",
+      curso: "Economia",
+      semestre: 6,
+      ira: 8.9,
+      cidade: "Fortaleza",
+      disponibilidade: "Estágio",
+      projetos: "Análise econométrica que orientou política pública municipal. Estudo sobre microcrédito impactou 500+ microempreendedores.",
+      storyline: "Henrique usa economia para justiça social. Suas análises fundamentam políticas que geram oportunidades para comunidades vulneráveis.",
+      githubPortfolio: "https://linkedin.com/in/henrique-economista"
+    },
+    {
+      id: 21,
+      nome: "Carla Mendonça",
+      curso: "Biotecnologia",
+      semestre: 7,
+      ira: 9.1,
+      cidade: "Ribeirão Preto",
+      disponibilidade: "Emprego",
+      projetos: "Pesquisa sobre biomarcadores para diagnóstico precoce de diabetes. Publicou 3 artigos em periódicos internacionais.",
+      storyline: "Carla está desenvolvendo o futuro da medicina personalizada. Sua pesquisa pode revolucionar diagnósticos médicos.",
+      githubPortfolio: "https://researchgate.net/carla-mendonca"
+    },
+    {
+      id: 22,
+      nome: "Felipe Rocha",
+      curso: "Educação Física",
+      semestre: 5,
+      ira: 8.3,
+      cidade: "Salvador",
+      disponibilidade: "Ambos",
+      projetos: "App de treinamento personalizado para pessoas com deficiência. 200+ usuários com programas adaptativos baseados em IA.",
+      storyline: "Felipe democratiza o acesso ao esporte adaptado. Seus programas promovem inclusão através da atividade física personalizada.",
+      githubPortfolio: "https://felipe-esporte-inclusivo.com"
+    },
+    {
+      id: 23,
+      nome: "Patrícia Andrade",
+      curso: "Direito Digital",
+      semestre: 8,
+      ira: 9.3,
+      cidade: "São Paulo",
+      disponibilidade: "Emprego",
+      projetos: "Manual de compliance para startups em LGPD. Consultoria jurídica que ajudou 20+ empresas a se adequarem à lei.",
+      storyline: "Patrícia navega na intersecção entre direito e tecnologia. Sua expertise protege empresas e cidadãos no mundo digital.",
+      githubPortfolio: "https://patricia-direito-digital.com"
+    },
+    {
+      id: 24,
+      nome: "Leonardo Castro",
+      curso: "Engenharia Ambiental",
+      semestre: 6,
+      ira: 8.7,
+      cidade: "Curitiba",
+      disponibilidade: "Estágio",
+      projetos: "Sistema de tratamento de água inovador para comunidades rurais. Solução de baixo custo que atende 1k+ famílias.",
+      storyline: "Leonardo engenheira soluções para acesso universal à água limpa. Seus projetos combinam tecnologia apropriada com impacto social.",
+      githubPortfolio: "https://github.com/leonardo-agua"
+    },
+    {
+      id: 25,
+      nome: "Raquel Santos",
+      curso: "Nutrição Esportiva",
+      semestre: 7,
+      ira: 8.8,
+      cidade: "Rio de Janeiro",
+      disponibilidade: "Ambos",
+      projetos: "App de nutrição para atletas olímpicos. Planos alimentares personalizados com base em análise de bioimpedância.",
+      storyline: "Raquel otimiza performance através da nutrição de precisão. Seus protocolos alimentares elevam atletas ao próximo nível.",
+      githubPortfolio: "https://raquel-nutri-esporte.com"
+    },
+    {
+      id: 26,
+      nome: "Bruno Almeida",
+      curso: "Música e Tecnologia",
+      semestre: 4,
+      ira: 8.5,
+      cidade: "São Paulo",
+      disponibilidade: "Estágio",
+      projetos: "Plataforma de colaboração musical online. 3k+ músicos criando colaborações remotas com ferramentas de IA para composição.",
+      storyline: "Bruno está redefinindo a criação musical colaborativa. Sua plataforma conecta talentos musicais ao redor do mundo.",
+      githubPortfolio: "https://bruno-music-tech.com"
+    },
+    {
+      id: 27,
+      nome: "Vanessa Costa",
+      curso: "Terapia Ocupacional",
+      semestre: 6,
+      ira: 9.0,
+      cidade: "Brasília",
+      disponibilidade: "Estágio",
+      projetos: "Programa de reabilitação com realidade virtual para AVC. Protocolo inovador que acelera recuperação motora em 40%.",
+      storyline: "Vanessa usa tecnologia imersiva para reabilitação. Seus protocolos devolvem independência e qualidade de vida aos pacientes.",
+      githubPortfolio: "https://vanessa-reabilitacao-vr.com"
+    },
+    {
+      id: 28,
+      nome: "Ricardo Pinto",
+      curso: "Logística e Supply Chain",
+      semestre: 8,
+      ira: 8.4,
+      cidade: "Santos",
+      disponibilidade: "Emprego",
+      projetos: "Otimização de rotas portuárias com algoritmos genéticos. Reduziu tempo de carga/descarga em 25% no Porto de Santos.",
+      storyline: "Ricardo revoluciona a logística brasileira com algoritmos inteligentes. Suas otimizações impactam a competitividade nacional.",
+      githubPortfolio: "https://linkedin.com/in/ricardo-logistica"
+    },
+    {
+      id: 29,
+      nome: "Carolina Neves",
+      curso: "Veterinária",
+      semestre: 7,
+      ira: 9.2,
+      cidade: "Goiânia",
+      disponibilidade: "Ambos",
+      projetos: "Telemedicina veterinária para regiões remotas. Plataforma que conecta veterinários a produtores rurais, atendendo 500+ animais.",
+      storyline: "Carolina democratiza cuidados veterinários através da tecnologia. Sua telemedicina salva vidas animais em áreas carentes.",
+      githubPortfolio: "https://carolina-televet.com"
+    },
+    {
+      id: 30,
+      nome: "André Barbosa",
+      curso: "Filosofia e Ética Digital",
+      semestre: 5,
+      ira: 8.6,
+      cidade: "Rio de Janeiro",
+      disponibilidade: "Estágio",
+      projetos: "Pesquisa sobre ética em IA que influenciou políticas de 3 empresas de tecnologia. Framework para desenvolvimento responsável de algoritmos.",
+      storyline: "André garante que a tecnologia serve à humanidade. Sua pesquisa ética orienta o desenvolvimento responsável da inteligência artificial.",
+      githubPortfolio: "https://andre-etica-digital.com"
     }
   ];
 
@@ -221,7 +461,7 @@ const CompanySearch = () => {
             </Button>
             <div className="flex items-center space-x-2">
               <div className="w-6 h-6 bg-gradient-primary rounded"></div>
-              <span className="font-semibold">Vitae</span>
+              <span className="font-semibold">Portfolio IA</span>
             </div>
           </div>
         </div>

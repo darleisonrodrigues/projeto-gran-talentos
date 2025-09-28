@@ -11,7 +11,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-primary rounded-lg"></div>
-            <h1 className="text-xl font-semibold text-foreground">Vitae</h1>
+            <span className="font-semibold">Portfolio IA</span>
           </div>
           <nav className="hidden md:flex space-x-6">
             <Link to="/cadastro" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -58,7 +58,7 @@ const Index = () => {
       <section className="py-16 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-            Por que escolher a Vitae?
+            Por que escolher a Portfolio IA?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="shadow-card hover:shadow-elegant transition-shadow">
@@ -123,10 +123,10 @@ const Index = () => {
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-6 h-6 bg-gradient-primary rounded"></div>
-            <span className="font-semibold text-foreground">Vitae</span>
+            <span className="font-semibold text-foreground">Portfolio IA</span>
           </div>
           <p className="text-muted-foreground">
-            © 2024 Vitae. Conectando talentos reais com oportunidades reais.
+            © 2025 Portfolio IA. Conectando talentos reais com oportunidades reais.
           </p>
         </div>
       </footer>

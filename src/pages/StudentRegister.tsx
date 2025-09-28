@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Upload, FileText, Video, ArrowLeft, Sparkles } from "lucide-react";
+import { Upload, FileText, Video, ArrowLeft, Sparkles, TrendingUp } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
@@ -109,7 +110,7 @@ const StudentRegister = () => {
           </Button>
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-gradient-primary rounded"></div>
-            <span className="font-semibold">Vitae</span>
+            <span className="font-semibold">Portfolio IA</span>
           </div>
         </div>
       </header>
@@ -269,6 +270,39 @@ const StudentRegister = () => {
                   onChange={(e) => handleInputChange("githubPortfolio", e.target.value)}
                 />
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Soft Skills */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <TrendingUp className="mr-2 h-5 w-5" />
+                Soft Skills
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                {[
+                  "Pensamento Estratégico",
+                  "Persuasão", 
+                  "Habilidade de Apresentação",
+                  "Pensamento Crítico",
+                  "Mentoria",
+                  "Inteligência Emocional",
+                  "Inovação",
+                  "Gestão Financeira", 
+                  "Resiliência",
+                  "Gestão de Tempo"
+                ].map((skill) => (
+                  <Badge key={skill} variant="outline" className="text-center justify-center py-2 cursor-pointer hover:bg-accent transition-colors">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-4">
+                Essas habilidades são extraídas automaticamente dos seus projetos e experiências
+              </p>
             </CardContent>
           </Card>
 
